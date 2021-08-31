@@ -1,0 +1,313 @@
+.btn-danger{
+
+    margin-top: 30px;
+    height: 35px;
+    margin-bottom: 25px;
+}
+
+form{
+    padding: 0 2%;
+    /* background-color: aqua; */
+}
+
+.maintext {
+    text-align: center;
+    
+}
+
+.table-striped{
+    margin-top: 2%;
+    /* margin-left: 4%;
+    margin-right: 4%; */
+}
+
+.frame {
+    padding: 0 4%;
+}
+
+table {
+    text-align:center;
+}
+
+.subform{
+    width: 350px;
+}
+
+#backto{
+
+    margin-top: 3%;
+}
+
+.alert-danger{
+
+    display: none;
+    text-align: right;
+}
+
+#clientconfirm{
+    display: none;
+}
+
+.showclient{
+    display: block;
+}
+
+#emailresetalert{
+    
+    display: none;
+}
+
+
+div.dataTables_wrapper {
+    direction: rtl;
+}
+.dataTables_filter input {
+    width: 300px !important; 
+}
+
+#cp{
+
+    padding-top: 10%;
+    padding-left: 10%;
+}
+
+#salesbtn, #purchsbtn, #clientsbtn, #reportsbtn, #vendorsbtn, #productsbtn{
+
+    height: 120px;
+    width:270px ;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#salesbtn{
+    background-color:  #21618c ;
+}
+
+#salesbtn:hover{
+    background-color:  #1b4f72 ;
+}
+
+
+#purchsbtn{
+    background-color:   #935116 ;
+}
+
+#purchsbtn:hover {
+background-color:   #784212  ;
+}
+
+#reportsbtn{
+    background-color:   #9a7d0a ;
+}
+
+#reportsbtn:hover{
+    background-color:  #7d6608 ;
+}
+
+#vendorsbtn{
+    background-color:  #2c3e50 ;
+}
+
+#vendorsbtn:hover {
+    background-color: #1d2830;
+}
+
+#productsbtn{
+    background-color:   #0e6655  ;
+}
+
+#productsbtn:hover{
+    background-color:  #0b5345 ;
+}
+
+#addnewproduct{
+    background-color:   #693d3d ;
+}
+
+#addnewproduct:hover{
+    background-color:    #641e16  ;
+}
+
+#productslistbtn{
+    background-color:  #ba5536 ;
+}
+
+#productslistbtn:hover {
+    background-color:   #ba4a00  ;
+}
+
+.reportalert, #clientwarn, #addprodsucess{
+    display: none;
+}
+
+#datePicker, #todate, #fromdate{
+
+    /* width: 120px; */
+    text-align: center;
+}
+
+.salespage {
+    height: 70px;
+    width: 450px;
+    margin-top: 3%;
+}
+
+#newinvbtn{
+    background-color:  #0e6655 ;
+}
+
+#newinvbtn:hover {
+    background-color:  #0b5345 ;
+}
+
+#newClientBtn{
+    background-color:    #633974 ;
+}
+
+#newClientBtn:hover{
+    background-color:   #4a235a ;
+}
+
+#allClientsBtn{
+    background-color:    #2c3e50 ;
+}
+
+#allClientsBtn:hover {
+    background-color:    #1c2833  ;
+}
+
+
+#saleslistbtn{
+    background-color:   #1f618d  ;
+}
+
+#saleslistbtn:hover{
+    background-color:  #154360  ;
+}
+
+select {
+    text-align:center; direction:rtl;
+}
+
+.rightwriting, .purchproduct{
+    text-align: right;
+}
+
+#newvenbtn, #newprodbtn, #newpurchbtn, #allpurchbtn {
+    width:200px; height:70px; margin: 5px;
+}
+
+#newvenbtn{
+    background-color:   #1f618d ;
+}
+
+#newvenbtn:hover{
+    background-color:  #154360 ;
+}
+
+#newprodbtn{
+    color: white;
+    background-color:   #0e6655  ;
+}
+
+#newprodbtn:hover {
+background-color:  #0b5345 ;
+}
+
+#allpurchbtn{
+    color: white;
+    background-color:   #d4ac0d  ;
+}
+
+#allpurchbtn:hover {
+    background-color:  #9a7d0a ;
+}
+
+#newpurchbtn {
+    color: white;
+    background-color:  #7f8c8d  ;
+}
+
+#newpurchbtn:hover {
+    background-color:  #616a6b ;
+}
+
+#newVendortBtn{
+    background-color:  #b38867 ;
+}
+
+#newVendortBtn:hover{
+    background-color:   #784212  ;
+}
+
+#allVendorsBtn{
+    background-color: #626d71;
+}
+
+#allVendorsBtn:hover{
+    background-color:  #424949 ;
+}
+
+.warningborder{
+    border:3px solid #ff0000
+}
+
+#backtosales{
+   margin-top: 3%;
+}
+
+input {
+    direction: rtl;
+}
+
+.logininput{
+    direction: ltr;
+}
+
+.invenv{
+
+    padding-bottom:25%; background-color: #1a5276; color:white;
+    border-radius: 5px;
+}
+
+.btn-width{
+    width: 120px;
+}
+
+
+
+@media print {
+
+    @page {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      
+      body  {
+        padding-top: 72px;
+        padding-bottom: 72px ;
+      }    
+
+    #tablehead {
+        -webkit-print-color-adjust: exact;
+    }
+
+    #printpage, #updatesales, #backbtn, #editpurch{
+
+        display: none;
+    }
+
+    #backto{
+        display: none;
+    }
+
+    #purchbackto{
+        display: none;
+    }
+
+    #backtosales{
+        display: none;
+    }
+
+    }
+
