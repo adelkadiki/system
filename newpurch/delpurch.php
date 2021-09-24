@@ -5,10 +5,11 @@ include_once("../model/db.class.php");
 
 $db = new Database();
 
-if($_SERVER['REQUEST_METHOD']=='POST'){
 
-    $id = $_POST['id'];
-    echo 'delete page '.$id;
+    $id = $_GET['id'];
+    // echo 'id  = '.$id;
+
+    // echo 'delete page '.$id;
 
     try {
 
@@ -21,8 +22,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         echo $e->getMessage();
     }
 
-    header("location: newpurch.php");
-}
+    header("Location: mainpurch.php");
+
 
 
 ?>

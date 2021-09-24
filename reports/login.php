@@ -28,7 +28,7 @@
 
 
 <div id="loginuserpass" class="alert alert-danger" style="text-align:center;" role="alert">
-اسم المستخدم أو كلمة المرور غير صحيحة
+username or password 
 </div>
 
 
@@ -37,15 +37,34 @@
 
 if(isset($_COOKIE['error'])) {
 
+//$count = $_COOKIE['attempt'];
+// echo ' cookie value = '.$count;
 
+  //      if($count > 2) {
+  //           header("Location: passreset.php") ;
+  //      }
         $msg = $_COOKIE['error'];
 
-       echo '<div class="alert alert-danger" style="text-align:center;" role="alert" id="unvalid" >'.$msg.'</div>';
+        echo '<div class="alert alert-danger" style="text-align:center;" role="alert" id="unvalid" >'.$msg.'</div>';
         setcookie("error", "", time()-3600);
 
     }
 
+// else {
+//     $_SESSION['attempt']=0 ;
+// } 
+   
 
+
+// if(isset($_SESSION['error'])) {
+
+//     $error = $_SESSION['error'];
+    
+//     echo ' <div class="alert alert-danger" style="text-align:center;" role="alert" id="unvalid" > '.$error.' </div>';
+
+//  }
+
+// unset($_SESSION['error']);
 
 ?>
 
@@ -74,7 +93,7 @@ if(isset($_COOKIE['error'])) {
 </div>
 
 <!-- button =  loginfun() onclick -->
-<button type="button"  onclick="loginfunc()" name="login" class="btn btn-primary" style="margin-left:10%;" >تسجيل الدخول</button>
+<button type="button" onclick="loginvalidate()" name="login" class="btn btn-primary" style="margin-left:10%;" >تسجيل الدخول</button>
 
 </form><br>
 <a href="passreset.php" style="margin-left:40%;">نسيت كلمة المرور </a>
@@ -92,9 +111,42 @@ if(isset($_COOKIE['error'])) {
    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
    
    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-   <script type="text/javascript" src='../template/file.js' ></script>
+   <!-- <script type="text/javascript" src='../template/file.js' ></script> -->
+
+<script>
+
+$count = 0;
+function loginvalidate(){
+    
+    $count +=1;
+    $('#usernamewarn').hide();
+    $('#unvalid').hide();
+    $username = $('#loguser').val();
+    $password = $('#logpass').val();
+    
+
+    if($count == 3){
+    
+        window.location = 'passreset.php';
+    
+    }else if($username == "" || $password == ""){
+    
+            $('#usernamewarn').show();
+           // $count +=1;
+    
+        }else {
+
+            $('#loginform').submit();
+            $('#unvalid').show();
+            
+        }
+            // $count +=1;
+            // console.log($count);
+          
+    }
 
 
+</script>
 </body>
 </html>
 

@@ -87,6 +87,8 @@ $id=0;
        $id = $row['id'];
  }
 
+ 
+
     $url = 'deleteclt.php?id='.$id;
     $invoiceurl = 'newinvoice.php?id='.$id.'&company='.$company ;
 ?>

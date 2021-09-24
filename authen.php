@@ -1,5 +1,5 @@
 <?php
-
+//session_start();
 require_once("model/db.class.php");
 require_once("model/user.class.php");
 
@@ -11,20 +11,20 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-    $res = $user->login($username, $password);
+$auth = false;
+
+
+
+   $res = $user->login($username, $password);
 
     if($res){
 
-        header("location: cp.php");
+        $auth = true;
         
-    }else{
-        
-        $error = 'Incorrect username or password';
-        session_start();
-        $_SESSION['error'] = $error;
-        header("location: index.php");
     }
-
+    
+   
+    echo $auth;
 
 }
 

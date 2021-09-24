@@ -66,7 +66,7 @@ $_SESSION['page'] = $file;
     <?php } ?>   
   </tbody>
  
-</table> <br>
+</table> <br><br>
 
 </div>
 

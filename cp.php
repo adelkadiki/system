@@ -4,7 +4,11 @@ if(!isset($_SESSION['user_id'])){
    header("location: ../index.php");
 }
 
-
+if(isset($_SESSION['attempt'])){
+    
+  unset($_SESSION['attept']);
+  
+}
 
 include("template/header.php"); 
 

@@ -5,8 +5,11 @@ class Database {
 
     private $host = "localhost";
     private $username = "adel";
-    private $password = "adel";
-    private $db = "british";
+   //private $username = "alertika_adel";
+   private $password = "adel";
+   // private $password = "KkPqhLgb4nar85g";
+   // private $db = "alertika_system";
+   private $db = "british";
     private $port = '3306';
 
       public function connect(){

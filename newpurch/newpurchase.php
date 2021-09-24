@@ -5,30 +5,31 @@ if(!isset($_SESSION['user_id'])){
    header("location: ../index.php");
 }
 
+
 $page = basename(__FILE__);
 $_SESSION['page'] = $page;
 
-include_once("../model/db.class.php");
-require("../template/header.php"); 
 
+include("../template/header.php"); 
+require_once("../model/db.class.php");
 
+$db = new Database();
+$stm = $db->connect()->prepare("SELECT * FROM vendor");
 
-    $id =  $_GET['id'] ;
-    
-    $company = $_GET['company'] ;
+$stm->execute();
 
- ?>
+?>
 
-<div class="container invenv">
-<h5 class="maintext" style="margin-top: 3%;">إصدار فاتورة جديدة</h5>
-<a href="sales.php" class="btn btn-outline-primary" >صفحة العملاء الرئيسية</a><br><br>
+<div class="container invenv" id="newpurchase">
+<h5 class="maintext" style="margin-top: 3%;">طلبية شراء</h5>
+<a href="mainpurch.php" class="btn btn-outline-primary" >صفحة المشتريات الرئيسية</a><br><br>
 
 <div class="alert alert-danger text-right" id="numbers" role="alert" >
 يرجي إدخال أرقام في خانة السعر و الكمية
 </div>
 
 <div class="alert alert-danger text-right" id="clientwarn" role="alert" >
-يرجي إختيار السلعة من القائمة
+يرجي إختيار السلعة
 </div>
 
 <div class="alert alert-danger" id="duplicatewarn" role="alert" style="text-align:right;">
@@ -36,18 +37,29 @@ require("../template/header.php");
 </div>
 
 
-<form method="post" action="../sales/subinvoice.php" onsubmit=" return newinvoice()" id="newinvform">
-
-<input type="hidden" name="client" value="<?php echo $id ?>">
+<form method="post" action="subnewpurch.php" onsubmit=" return newpurchsub()" id="newinvform">
 
 <div class="form-group" >
 <div class="text-right">
-<h5> <?php echo $company; ?> </h5>
+<label >المورّد</label>
+</div>    
 
+    
+    <select class="form-control" name="vendorid" onchange="getselect(this.value)" >
+    <option value="">إسم الشركة</option>
+    <?php while($row = $stm->fetch()){ ?>
+      
+      <option value=" <?php echo $row['id'] ?>"> <?php echo $row['company'];?> </option>
+     
+      <?php 
+    
+    } ?>  
+    </select>
+    
+  
+  </div>
 
-<?php  
-    $db = new Database();
-    $stmpr = $db->connect()->prepare("SELECT * FROM product");
+<?php  $stmpr = $db->connect()->prepare("SELECT * FROM product");
 
         $stmpr->execute(); ?>
 
@@ -70,13 +82,8 @@ require("../template/header.php");
 
     <label class="text-right">السلعة</label>
     
-    <select class="form-control" name="product[]" style="width:200%;" id="prodsel">
-    <option value="">اختار السلعة</option>
-
-    <?php while($row = $stmpr->fetch()){ ?>
-      
-      <option><?php echo $row['name'];?></option>
-      <?php } ?>  
+    <select class="form-control" name="vendor[]" style="width:250px;" id="vendor">
+    
     </select>
     
   </div>
@@ -86,7 +93,7 @@ require("../template/header.php");
 
 
 
-<div> <button id="anotherproduct" type="button" class="btn btn-primary">إضافة سلعة</button> </div><br><br>
+<div class="text-right"> <button id="anotherproduct" type="button" class="btn btn-primary">إضافة سلعة</button> </div><br><br>
   
 <div class="form-group text-right">
       
@@ -95,7 +102,7 @@ require("../template/header.php");
 </div>
 
 <div class="col text-center">
-  <button type="submit" class="btn btn-success subform">إرسال</button><br><br>
+  <button type="submit" class="btn btn-primary subform">إرسال</button><br><br>
 </div>
 </form>
 
@@ -103,6 +110,6 @@ require("../template/header.php");
 </div>
 
 
-
-
-<?php require("../template/footer.php");  ?>
+<?php 
+include("../template/footer.php"); 
+?>

@@ -10,6 +10,16 @@ form{
     /* background-color: aqua; */
 }
 
+#loginform{
+
+    margin-left: 30%;
+}
+
+#unvalid{
+
+    display: block;
+}
+
 .maintext {
     text-align: center;
     
@@ -274,7 +284,20 @@ input {
     width: 120px;
 }
 
+.invdet{
 
+    font-size: 20px;
+}
+
+#invdetTable th td{
+    
+    font-size: 23px;
+    
+}
+
+#newpurchase{
+    background-color:  #0e6655 ;
+}
 
 @media print {
 

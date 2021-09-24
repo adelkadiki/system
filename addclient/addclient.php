@@ -26,8 +26,11 @@ if(isset($_SESSION['client'])){
 <div class="alert alert-primary" id="clientconfirm" role="alert">
 تم إضافة بيانات زبون جديد
 </div>
-<div class="alert alert-danger" role="alert">
+<div class="alert alert-danger" role="alert" id="duplicatewarn">
 هذا الزبون موجود بقائمة الزبائن يرجى التحقق من الأسم
+</div>
+<div class="alert alert-danger" role="alert" id="emptyclientwarn">
+يرجى كتابة إسم الزبون
 </div>
 
 <!-- <form method="post" action="subnew.php"> -->
@@ -65,7 +68,7 @@ if(isset($_SESSION['client'])){
     <input type="text" class="form-control" name="website">
   </div>
   
-  <button type="button" onclick="newclient()"  class="btn btn-primary form-control">إرسال</button><br><br>
+  <button type="button" onclick="addnewclient()"  class="btn btn-primary form-control">إرسال</button><br><br>
 </form>
 <br><br>
 </div>

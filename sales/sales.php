@@ -56,7 +56,7 @@ $stm->execute();
    <?php } ?>
   </tbody>
 </table>
-
+<br><br>
 
   </div>
 

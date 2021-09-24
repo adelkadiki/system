@@ -56,23 +56,27 @@ $db = new Database();
 ?>
 
 <div class="container">
-<a href="mainpurch.php" class="btn btn-primary" id="purchbackto" style="margin-top:1%;">Pruchasement Main Page</a>
-<div style="text-align:center; font-size:18px; font-weight:950;">COMPANY NAME</div>
-          <div style="text-align:center; font-size:10px; font-weight:950;">Services we offer</div>
+<a class="btn btn-outline-primary" id="backbtn" href="allpurchs.php">قائمة المشتريات</a>
+<span style="width:75px; margin-top:3%; margin-left:65%;" class="btn btn-success" id="printpage" onclick="window.print()" >طباعة</span>
+<div style="text-align:center; font-size:38px; font-weight:950;">إسم الشركة</div>
+<div style="text-align:center; font-size:25px; font-weight:950;">الخدمات التي نقدمها</div>
+
+<div style="text-align:center; text-decoration: underline; font-size:25px; font-weight:950; margin-top: 7px;" >طلبية شراء</div>        
+
  
   <div id="printpart">
-<div>Purchase Order number : <?php echo $id; ?> </div>
-<div>To : <span style="font-weight: 950;" > <?php echo $vendor; ?> </span> </div>
-<div> Date : <span style="font-weight: 950;"> <?php echo $date; ?> </span> </div>
+<div class="rightwriting" >رقم الطلبية <?php echo $id; ?> </div>
+<div class="rightwriting">الشركة <span style="font-weight: 950;" > <?php echo $vendor; ?> </span> </div>
+<div class="rightwriting" > التاريخ <span style="font-weight: 950;"> <?php echo $date; ?> </span> </div>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Item number</th>
-      <th scope="col">Product</th>
-      <th scope="col">Unit Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Total</th>
+      <th scope="col">المجموع</th>
+      <th scope="col">الكمية</th>
+      <th scope="col">سعر الوحدة</th>
+      <th scope="col">الوصف</th>
+      <th scope="col">#</th>
     </tr>
   </thead>
   <tbody>
@@ -88,29 +92,28 @@ $db = new Database();
          $total = $total+$subtotal;
          ?>
     <tr>
-      <th scope="row"><?php echo $count; ?></th>
-      <td><?php echo $product[$key]; ?></td>
-      <td> <?php echo $unitprice[$key]; ?> </td>
-      <td><?php echo $quantity[$key]; ?></td>
       <td><?php echo $subtotal; ?></td>
+      <td><?php echo $quantity[$key]; ?></td>
+      <td> <?php echo $unitprice[$key]; ?> </td>
+      <td><?php echo $product[$key]; ?></td>
+      <th scope="row"><?php echo $count; ?></th>
+
     </tr>
     <?php } ?>
     <tr style="background-color:#cdcecc; ">
-    <td>TOTAL</td><td></td><td></td><td></td><td><?php echo $total; ?></td>
+    <td><?php echo $total; ?></td><td></td><td></td><td></td><td>  الإجمالي </td>
     </tr>
     
   </tbody>
 </table>
 
-
-<div style="font-size:12px;"> <span style="font-weight:950;">Address:</span> Street, Region, City</div>
-<div style="font-size:12px;"><span style="font-weight:950;">Phone #:</span> 32656465</div>
-<div style="font-weight:950; font-size:12px;">www.company.com</div>
-
-
+<div  class="rightwriting invdet"> <span style="font-weight:950;">العنوان</span> المبني الشارع المنطقة</div>
+<div  class="rightwriting invdet"><span style="font-weight:950;">هاتف</span> 32656465</div>
+<div style="font-weight:950; font-size:18px;" class="rightwriting">www.company.com</div>
+<!-- 
 <div class="col text-center">
 <span style="width:75px;" class="btn btn-success" id="printpage" onclick="window.print()" >Print</span>
-  </div>
+  </div> -->
 
 </div>
      

@@ -1,5 +1,7 @@
-<?php include("../template/header.php"); 
- include_once("../model/db.class.php");
+<?php 
+
+include("../template/header.php"); 
+include_once("../model/db.class.php");
  
  $db = new Database();
  $stm = $db->connect()->prepare("SELECT id,company FROM vendor");
@@ -12,8 +14,21 @@
 <h3 style="text-align:center;" id="purh">إضافة مشتريات</h3>
 <a class="btn btn-outline-primary" href="mainpurch.php">صفحة المشتريات الرئيسية</a><br><br>
 <div class="alert alert-danger" role="alert">
-  Please enter a valid number
+يرجى التأكد من إضافة رقم في خانة الكمية و السعر
 </div>
+
+<div id="duplicatewarn" class="alert alert-danger" role="alert">
+duplicate warning 
+</div>
+
+<div id="clientwarn" class="alert alert-danger" role="alert">
+client warning
+</div>
+
+<div id="numbers" class="alert alert-danger" role="alert">
+numbers warning
+</div>
+
 
 <?php 
 
@@ -29,12 +44,12 @@
 ?>
 
 
-<form method="post" action="subnewpurch.php" id="productForm" onsubmit=" return newpurchsub()">
+<form method="post" action="subnewpurch.php" id="productForm" onsubmit="return newpurchsub()" >
   
 <div class="form-group text-right">
     <label >الشركة</label>
 
-<select class="form-control" name="vendorid" id="products" onchange="getselect(this.value);">
+<select class="form-control" name="vendorid" id="products" onchange="getselect(this.value)">
 <option value="">إختر المورّد</option>
     <?php while($row = $stm->fetch()) { ?>   
       

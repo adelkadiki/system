@@ -197,6 +197,110 @@ $('#allpurches').DataTable(
 
 // ready main function
 
+// LOGIN FUNCTION
+var count = 0;
+
+function loginfunc(){ 
+
+  count +=1;
+
+  if(count > 3){
+
+    window.location.href = 'passreset.php';
+  }
+
+  $('#loginuserpass').hide();
+  $('#usernamewarn').hide();
+
+  var username = $('#loguser').val();
+  var password = $('#logpass').val();
+  
+  if(username == "" || password == ""){
+
+    $('#usernamewarn').show();
+  
+  }else {
+
+  $.ajax({
+
+    type: 'post',
+    url: 'authen.php',
+                
+    data : {username:username, password:password},
+  
+    success: function (response){
+
+       if(response == true){
+        
+        window.location = 'cp.php';
+       
+        } else {
+          
+          $('#loginuserpass').show();
+           
+       }
+
+     }
+
+  });
+}
+  
+}
+
+// LOGIN FUNCTION
+
+
+// verify email function
+
+
+function emailsend(){
+
+  $('#emailwarn').hide();
+  $('#emailvalid').hide();
+  $('#emailnotfound').hide();
+
+   var email = $('#emailadd').val();
+
+   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  
+
+  if(email == ""){
+      $('#emailwarn').show();
+  
+    }
+  
+  else if(!regex.test(email)){
+
+      $('#emailvalid').show();
+    
+    }else {
+
+      $.ajax({
+
+        type: 'post',
+        url: 'emailcheck.php',
+                    
+        data : {email:email},
+      
+        success: function (response){
+    
+           if(response == true){
+            
+            $('#emailresetform').submit();
+           
+            } else {
+              
+              $('#emailnotfound').show();
+               
+           }
+    
+         }
+    
+
+      });
+    }
+}
+
 
 
 $('#delwarn').click(function(){
@@ -247,11 +351,10 @@ function getselect(option){
 
 }
 
-// CURRENTLY WORKING ON FUNCTION
+// NEW PURCHASE FUNCTION
 
 function newpurchsub(){
 
-  
   $('#clientwarn').hide();
   $('#numbers').hide();
   $('#duplicatewarn').hide();
@@ -274,7 +377,7 @@ function newpurchsub(){
   var opts  = [];
   $('#newinvform').find('select').each(function(){
    
-   // console.log((this).value);
+   
     
     opts.push(this.value);
 
@@ -283,20 +386,13 @@ function newpurchsub(){
     for(var i=0; i<opts.length-1; i++ ){
         if(opts[i]===opts[i+1]){
 
-          //console.log(opts[i]);
           sub=false;
           $('#duplicatewarn').show();
-        //   $("#prodsel > option").each(function() {
-
-        //         if(this.value == opts[i]){
-        //           $(this).parent().attr('class', 'warningborder');
-        //         }
-            
-        // });
+       
          
         }
     }
-    //sub = false;
+
  });
  
  
@@ -444,16 +540,21 @@ function newvendsubmit(){
 }
 
 
-function newclient(){
+function addnewclient(){
  
   var comp = $('#compname').val();
   
   if(comp==""){
   
-    $('.alert-danger').show();    
-    return false;    
+    $('#emptyclientwarn').show();    
+   
   
-  }else {
+   }
+  
+  
+  else {
+
+    
 
   $.ajax({
    
@@ -470,7 +571,8 @@ function newclient(){
            
      }else {
 
-        $('.alert-danger').show();        
+        $('#emptyclientwarn').hide();          
+        $('#duplicatewarn').show();        
 
           }
     }

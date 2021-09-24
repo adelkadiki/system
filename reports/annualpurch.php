@@ -1,7 +1,7 @@
 <?php 
 
 include("../template/header.php"); 
-include("../model/db.class.php");
+include_once("../model/db.class.php");
 
 ?>
 
@@ -17,7 +17,7 @@ include("../model/db.class.php");
     <select class="form-control" id="annpurch" dir="rtl" style="text-align-last:center;">
       <option value="">اختر السنة </option>
 <?php
-        for ($x = 2010; $x <= 2100; $x++) { ?>
+        for ($x = 2020; $x <= 2050; $x++) { ?>
  <option value="<?php echo $x; ?>" ><?php echo $x; ?></option>
  <?php        
         } 
@@ -35,8 +35,8 @@ include("../model/db.class.php");
   <thead>
     <tr>
       
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">القيمة</th>
+      <th scope="col">الشهر</th>
 
     </tr>
   </thead>

@@ -48,14 +48,14 @@ $stms->execute();
 <!-- <a href="sales.php" class="btn btn-outline-primary" id="backto">قائمة المبيعات</a>   -->
 <span style="width:75px; margin-top:3%; margin-left:65%;" class="btn btn-success" id="printpage" onclick="window.print()" >طباعة</span>
 
-<div style="text-align:center; font-size:23px; font-weight:950;">إسم الشركة</div>
-<div style="text-align:center; font-size:15px; font-weight:950;">الخدمات التي نقدمها</div>
+<div style="text-align:center; font-size:38px; font-weight:950;">إسم الشركة</div>
+<div style="text-align:center; font-size:25px; font-weight:950;">الخدمات التي نقدمها</div>
 
-<div style="text-align:center; text-decoration: underline; font-size:20px; font-weight:950; margin-top: 7px;" >فاتورة</div>        
+<div style="text-align:center; text-decoration: underline; font-size:25px; font-weight:950; margin-top: 7px;" >فاتورة</div>        
 
-<div class="rightwriting" > <?php echo $row['id']?> رقم الفاتورة  </div>
-<div class="rightwriting" > <span style="font-weight: 950;" > <?php echo $row['client']?> </span> الزبون</div>
-<div class="rightwriting" > التاريخ <span style="font-weight: 950;"> <?php echo $row['date'] ?> </span> </div>
+<div class="rightwriting invdet"> <?php echo $row['id']?> رقم الفاتورة  </div>
+<div class="rightwriting invdet" > <span style="font-weight: 950;" > <?php echo $row['client']?> </span> الزبون</div>
+<div class="rightwriting invdet" > التاريخ <span style="font-weight: 950;"> <?php echo $row['date'] ?> </span> </div>
 
 <?php }
 
@@ -68,7 +68,7 @@ $stms->execute();
 
 <div class="container">
 
-<table class="table table-striped">
+<table class="table table-striped" id="invdetTable">
   <thead>
     <tr>
       <th scope="col">المجموع</th>
@@ -109,9 +109,9 @@ $stms->execute();
 
 </div>
 
-<div style="font-size:12px;" class="rightwriting"> <span style="font-weight:950;">العنوان</span> المبني الشارع المنطقة</div>
-<div style="font-size:12px;" class="rightwriting"><span style="font-weight:950;">هاتف</span> 32656465</div>
-<div style="font-weight:950; font-size:12px;" class="rightwriting">www.company.com</div>
+<div  class="rightwriting invdet"> <span style="font-weight:950;">العنوان</span> المبني الشارع المنطقة</div>
+<div  class="rightwriting invdet"><span style="font-weight:950;">هاتف</span> 32656465</div>
+<div style="font-weight:950; font-size:18px;" class="rightwriting">www.company.com</div>
 
 
 <!-- <div class="col text-center">

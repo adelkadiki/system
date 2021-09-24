@@ -37,6 +37,37 @@ class User {
 
     }
 
+
+   public function emailVerf($email){
+
+    $db = new Database();
+
+    try{
+
+          $stm = $db->connect()->prepare("SELECT username FROM user WHERE email= :email");
+          $stm->bindValue(':email', $email);
+          $stm->execute();
+
+          $count = $stm->rowCount();
+          $row = $stm->fetch(PDO::FETCH_ASSOC);
+
+            if($count==1 && !empty($row)){
+  
+                  return true;
+                
+            }else {
+
+              return false;
+            }
+
+    }catch(PDOException $e){
+    echo $e->getMessage();
+}
+
+
+
+   }
+
 }
 
 ?>

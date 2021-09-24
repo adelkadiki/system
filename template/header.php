@@ -32,5 +32,10 @@
   <a class="navbar-brand" href="../../cp.php">Navbar</a>
   <div class="navbar-nav">
       <a class="nav-item nav-link" href="../signout.php">تسجيل خروج</a>
+      
+  </div>
+  <div class="navbar-nav">
+      
+      <a class="nav-item nav-link" href="../signout.php">user</a>
   </div>
 </nav>

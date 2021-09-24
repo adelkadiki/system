@@ -31,7 +31,7 @@
 
  <div class="row">
 <div class="col text-center">
-<a href="newpurch.php" > <button class="btn btn-primary salespage" id="newinvbtn">إضافة طلبية شراء</button> </a>
+<a href="newpurchase.php" > <button class="btn btn-primary salespage" id="newinvbtn">إضافة طلبية شراء</button> </a>
 
 </div>
 </div>

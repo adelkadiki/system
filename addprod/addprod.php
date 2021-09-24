@@ -1,5 +1,7 @@
-<?php include_once("../template/header.php");
+<?php 
+      
       include_once("../model/db.class.php");
+      include("../template/header.php");
 ?>
 
 <div class="container invenv" style="padding-bottom:4%;">

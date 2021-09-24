@@ -59,7 +59,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   <?php  foreach($product as $key => $v) { 
     
     $subtotal= $unitprice[$key]*$quantity[$key];
-    $total = $total+$subtotal;
+    $total += $subtotal;
     ?>
     <tr>
     

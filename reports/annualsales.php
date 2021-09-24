@@ -17,7 +17,7 @@ include("../model/db.class.php");
     <select class="form-control" id="annsales" dir="rtl" style="text-align-last:center;">
       <option value="">اختر السنة </option>
 <?php
-        for ($x = 2010; $x <= 2100; $x++) { ?>
+        for ($x = 2020; $x <= 2050; $x++) { ?>
  <option value="<?php echo $x; ?>" ><?php echo $x; ?></option>
  <?php        
         } 

@@ -21,14 +21,14 @@ include("../template/header.php");
   
         <div class="row">
         <div class="col text-center">
-        <a href="annualsales.php" > <button class="btn btn-primary salespage" id="allVendorsBtn" >قائمة مبيعات شهرية</button> </a>
+        <a href="annualsales.php" > <button class="btn btn-primary salespage" id="allVendorsBtn" >قائمة المبيعات الشهرية</button> </a>
         </div>
         </div>
 
 
         <div class="row">
         <div class="col text-center">
-        <a href="annualpurch.php" > <button class="btn btn-primary salespage" id="allVendorsBtn" >قائمة مشتريات شهرية</button> </a>
+        <a href="annualpurch.php" > <button class="btn btn-primary salespage" id="allVendorsBtn" >قائمة المشتريات الشهرية</button> </a>
         </div>
         </div>
     
