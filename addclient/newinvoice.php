@@ -27,11 +27,11 @@ require("../template/header.php");
 يرجي إدخال أرقام في خانة السعر و الكمية
 </div>
 
-<div class="alert alert-danger text-right" id="clientwarn" role="alert" >
+<div class="alert alert-danger text-center" id="clientwarn" role="alert" >
 يرجي إختيار السلعة من القائمة
 </div>
 
-<div class="alert alert-danger" id="duplicatewarn" role="alert" style="text-align:right;">
+<div class="alert alert-danger text-center" id="duplicatewarn" role="alert" style="text-align:right;">
 تم تكرار سلعة أكثر من مرة
 </div>
 
@@ -95,7 +95,7 @@ require("../template/header.php");
 </div>
 
 <div class="col text-center">
-  <button type="submit" class="btn btn-success subform">إرسال</button><br><br>
+  <button type="submit" class="btn btn-success subform">إدخال</button><br><br>
 </div>
 </form>
 

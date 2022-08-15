@@ -9,7 +9,7 @@ class Database {
    private $password = "adel";
    // private $password = "KkPqhLgb4nar85g";
    // private $db = "alertika_system";
-   private $db = "british";
+   private $db = "management";
     private $port = '3306';
 
       public function connect(){

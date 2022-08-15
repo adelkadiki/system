@@ -20,7 +20,7 @@ include("template/header.php");
 
 <div class="container" id="cp">
 
-
+<div class="row justify-content-center align-items-center">
 
 <div class="row">
 
@@ -102,6 +102,7 @@ include("template/header.php");
 <a href=""><button class="btn btn-success">btn four</button></a>
 </div> -->
 
+</div>
 </div>
 
 

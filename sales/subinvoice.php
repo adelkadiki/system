@@ -9,7 +9,7 @@ include_once("../model/db.class.php");
 include("../template/header.php");
 
 $page = $_SESSION['page'];
-
+$sales_id=0;
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
 
@@ -23,6 +23,28 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
    
         
         $db = new Database();
+
+        //verifying the quantity availability
+
+        foreach($product as $key => $v) { 
+
+        $stm = $db->connect()->prepare("SELECT quantity FROM product WHERE name=:name");    
+        $stm->bindValue(':name', $product[$key]);
+        $stm->execute();
+
+              while($row = $stm->fetch()){
+
+                    if($row['quantity'] < $quantity[$key]){
+                        $_SESSION['quantity'] = $product[$key] ;
+                        header("Location: invoice.php");
+                    }
+              }
+
+        }
+
+
+        //verifying the quantity availalibity
+
     
         $stmc = $db->connect()->prepare("SELECT company FROM client WHERE id=:id");    
         $stmc->bindValue(':id', $client_id);

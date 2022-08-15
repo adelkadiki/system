@@ -9,6 +9,7 @@ include_once("../model/db.class.php");
 include("../template/header.php"); 
 
 $url ="";
+$invoiceId=0;
 $current_file = basename($_SERVER['PHP_SELF']);
 if($current_file=="confinvoice.php"){
 $url .="salesmain.php";
@@ -38,10 +39,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $stm->bindValue(':sales_id', $sales_id);
         $stm->execute();   
 
-                // echo $product[$key].'<br>';
-                // echo $unitprice[$key].'<br>';
-                // echo $quantity[$key].'<br>';
-
+                  $stm2 = $db->connect()->prepare("UPDATE product set quantity=quantity-:quantity 
+                  WHERE name=:name");    
+                  $stm2->bindValue(':quantity', $quantity[$key]);
+                  $stm2->bindValue(':name', $product[$key]);
+                  $stm2->execute();     
 
         }
 
@@ -52,7 +54,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         while($row = $stms->fetch()){
 
               
-        
+        $invoiceId = $row['id'];
 
 ?>
 
@@ -63,7 +65,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   
   <div id="printpart">
 <div class="rightwriting" > <?php echo $row['id']; ?> رقم الفاتورة </div>
-<div class="rightwriting" > <span style="font-weight: 950;" > <?php echo $row['client']?> </span> الزبون </div>
+<div class="rightwriting" > <span style="font-weight: 950;" > <?php echo $row['client']?> </span>  </div>
 <div class="rightwriting" >  <span style="font-weight: 950;"> <?php echo $row['date'] ?> </span> التاريخ </div>
 
 <?php } ?>
@@ -113,7 +115,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 </div>
 
   <div class="col text-center">
-<span style="width:75px;" class="btn btn-success" id="printpage" onclick="window.print()" >طباعة</span>
+<span style="width:75px;" class="btn btn-success" id="printpage" onclick="document.title=''+<?php echo $invoiceId ?>+''; window.print(); return false;" >طباعة</span>
   </div>
 
 </div>

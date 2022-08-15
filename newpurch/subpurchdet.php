@@ -37,6 +37,20 @@ $db = new Database();
                 echo $e->getMessage();
                 }
 
+
+
+                $stmpq = $db->connect()->prepare("SELECT quantity FROM product WHERE name=:name");
+                $stmpq->bindValue(':name', $product[$key]);
+                $stmpq->execute();
+
+                    $qntRow = $stmpq->fetch();
+                    $newQuan = $qntRow['quantity'] + $quantity[$key];
+
+                            $stmpnq = $db->connect()->prepare("UPDATE product SET quantity=:quantity
+                            WHERE name=:name");
+                            $stmpnq->bindValue(':name', $product[$key]);
+                            $stmpnq->bindValue(':quantity', $newQuan);
+                            $stmpnq->execute();
      }
 
      

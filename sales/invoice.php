@@ -6,6 +6,7 @@ if(!isset($_SESSION['user_id'])){
 }
 
 
+
 $page = basename(__FILE__);
 $_SESSION['page'] = $page;
 
@@ -18,11 +19,23 @@ $stm = $db->connect()->prepare("SELECT * FROM client");
 
 $stm->execute();
 
+
+
 ?>
 
 <div class="container invenv">
+  
 <h5 class="maintext" style="margin-top: 3%;">إصدار فاتورة جديدة</h5>
+<?php 
+  if(isset($_SESSION['quantity'])){
+
+    echo '<h5 style="text-align:center;"> The quantity of '.$_SESSION['quantity'].' is not enouph </h5>';
+    unset($_SESSION['quantity']);
+  }
+  ?>
 <a href="salesmain.php" class="btn btn-outline-primary" >صفحة المبيعات الرئيسية</a><br><br>
+
+
 
 <div class="alert alert-danger text-right" id="numbers" role="alert" >
 يرجي إدخال أرقام في خانة السعر و الكمية

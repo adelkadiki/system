@@ -1,7 +1,10 @@
+
+
 $(document).ready(function(){
 
-
-  
+$('#testing').click(function(){
+  alert('clicked');
+});
 
  $('#datePicker').daterangepicker({
     singleDatePicker: true,
@@ -324,32 +327,36 @@ $('#delwarn').click(function(){
   });
   
 
+  // TESTING NEW PURCHAGE EVENT LESTINER 
 
-function getselect(option){
+  function updateProduct(option){
+
     
-    
+   
     $.ajax({
-        type: 'post',
-        url: 'findvendor.php',
-                    
-         data : {vendorid:option} ,
+      type: 'post',
+      url: 'findvendor.php',
+                  
+       data : {vendorid:option} ,
+     
        
+       success: function (response) {
+          
+         $('#vendor option').remove();
+         $('#vendor').append('<option value="">إختر السلعة</option>');
+         $('#vendor').append(response);
          
-         success: function (response) {
-            
-           $('#vendor option').remove();
-           $('#vendor').append('<option value="">إختر السلعة</option>');
-           $('#vendor').append(response);
-           
-           
-        },
-        error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-        }
-        });
+         
+      },
+      error: function( jqXhr, textStatus, errorThrown ){
+          console.log( errorThrown );
+      }
+      });
 
 
-}
+  }
+
+
 
 // NEW PURCHASE FUNCTION
 
@@ -467,35 +474,37 @@ function newinvoice(){
 }
 
 // NEW PRODUCT VALIDATION FUNCTION
-function newprodsub(){
+// function newprodsub(){
 
-  $('#productwarn').hide();
-  $('#compwarn').hide();
-  $('#addprodsucess').hide();
-
-  var sub = true;
-  var prodcut = $('#addprodfield').val();
-  var company = $('#prodcomp').val();
   
-  if(prodcut == ""){
-      $('#productwarn').show();
-      sub=false;
-  }
 
-  if(company == ""){
-    $('#compwarn').show();
-     sub=false;
-  }
+//   $('#productwarn').hide();
+//   $('#compwarn').hide();
+//   $('#addprodsucess').hide();
 
-  if(sub == true){
-
-    $('#newprodform').submit();
+//   var sub = true;
+//   var prodcut = $('#addprodfield').val();
+//   var company = $('#prodcomp').val();
   
-  }
+//   if(prodcut == ""){
+//       $('#productwarn').show();
+//       sub=false;
+//   }
 
-  //return sub;
+//   if(company == ""){
+//     $('#compwarn').show();
+//      sub=false;
+//   }
 
-}
+//   if(sub == true){
+
+//     $('#newprodform').submit();
+  
+//   }
+
+//   //return sub;
+
+// }
 
 
 // NEW VENDOR VALIDATION FUNCTION

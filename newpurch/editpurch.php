@@ -2,11 +2,44 @@
  require_once("../model/db.class.php");
  require("../template/header.php"); 
 
-if($_SERVER['REQUEST_METHOD']=='GET'){
+ 
 
-    $id = $_GET['id'];
-    $url = 'purchdetails.php?id='.$id;
+if($_SERVER['REQUEST_METHOD']=='POST'){
+
+    $id = $_POST['id'];
+
     $db = new Database();
+    
+     //$productsList = array();
+     $productsList = unserialize(base64_decode($_POST['jsonQnt']));
+    
+     
+    
+    
+       // Deleting old quantities from product table
+
+            foreach($productsList as $pr => $qnt){
+            
+                    
+              try {
+              
+              $stmoq = $db->connect()->prepare("UPDATE product SET quantity=quantity-:qnt
+              WHERE name=:name");
+              $stmoq->bindValue(':name', $pr);
+              $stmoq->bindValue(':qnt', $qnt);
+              $stmoq->execute();        
+              
+
+            }catch(PDOException $e){
+
+              echo $e->getMessage();
+          }
+
+            }
+
+
+    $url = 'purchdetails.php?id='.$id;
+   
 
     $prstm = $db->connect()->prepare("SELECT * FROM purchasement WHERE id=:id");
     $prstm->bindValue(':id', $id);
@@ -22,11 +55,11 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 <h3 class="maintext" >تعديل بيانات طلبية مشتريات</h3>
   <div class="rightwriting" >رقم الطلبية <?php echo $prow['id']; ?></div> 
   <div class="rightwriting">التاريخ <?php echo $prow['date']; ?></div> <br>
-  <h5 class="rightwriting"> <?php echo $prow['vendor']; ?> إلى </h5>
+  <h5 class="rightwriting"> <?php echo $prow['vendor']; ?>  </h5>
 
 
 <?php
-     } 
+ } 
 
     $stm = $db->connect()->prepare("SELECT * FROM purchdetails WHERE purch_id=:purch_id");
     $stm->bindValue(':purch_id', $id);
@@ -54,7 +87,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 
   <?php 
   $count=0;
-   
+  $total=0; 
 
   while($row = $stm->fetch()){ ?>
 
@@ -81,16 +114,18 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     <input type="hidden" name="purchid" value="<?php echo $id ?>">
       
       <div class="col text-center" >
-      <button class="btn btn-success btn-width" >تأكيد</button>
+      <button class="btn btn-success btn-width" id="productUpt">تأكيد</button>
       </div>
       
     </form>
+
+    
 
     </div><br><br>
 
 
     <div class="co text-center" >
-<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal">حذف السلعة</button>
+<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal">حذف طلبية الشراء</button>
 </div>
 
 
@@ -112,12 +147,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 </div>
 <!-- confirm dialog -->
 
-
-
-  <?php  
-  
-
-}
+ <?php }
 
 require("../template/footer.php"); 
 

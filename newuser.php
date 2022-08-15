@@ -2,7 +2,7 @@
 
 
 
-$hashed= password_hash('user', PASSWORD_DEFAULT);
+$hashed= password_hash('a', PASSWORD_DEFAULT);
 
 echo $hashed;
 

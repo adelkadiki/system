@@ -24,15 +24,15 @@ $stm->execute();
 <h5 class="maintext" style="margin-top: 3%;">طلبية شراء</h5>
 <a href="mainpurch.php" class="btn btn-outline-primary" >صفحة المشتريات الرئيسية</a><br><br>
 
-<div class="alert alert-danger text-right" id="numbers" role="alert" >
+<div class="alert alert-danger text-center" id="numbers" role="alert" >
 يرجي إدخال أرقام في خانة السعر و الكمية
 </div>
 
-<div class="alert alert-danger text-right" id="clientwarn" role="alert" >
+<div class="alert alert-danger text-center" id="clientwarn" role="alert" >
 يرجي إختيار السلعة
 </div>
 
-<div class="alert alert-danger" id="duplicatewarn" role="alert" style="text-align:right;">
+<div class="alert alert-danger text-center" id="duplicatewarn" role="alert" style="text-align:right;">
 تم تكرار سلعة أكثر من مرة
 </div>
 
@@ -45,7 +45,7 @@ $stm->execute();
 </div>    
 
     
-    <select class="form-control" name="vendorid" onchange="getselect(this.value)" >
+    <select class="form-control" name="vendorid" onchange="updateProduct(this.value)" >
     <option value="">إسم الشركة</option>
     <?php while($row = $stm->fetch()){ ?>
       
@@ -65,6 +65,8 @@ $stm->execute();
 
 <div id="addproduct" class="row" >
 <button class="btn btn-danger" type="button"  > حذف </button>
+
+
 
   <div class="form-group col-sm-3 text-right">
       <label >الكمية</label>

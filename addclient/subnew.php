@@ -5,12 +5,12 @@ include("../template/header.php");
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
 
-    $company = $_POST['company'];
-    $manager = $_POST['manager'];
-    $address = $_POST['address'];
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
-    $website = $_POST['website'];
+    $company = htmlspecialchars(trim($_POST['company']));
+    $manager = htmlspecialchars(trim($_POST['manager']));
+    $address = htmlspecialchars(trim($_POST['address']));
+    $phone = htmlspecialchars(trim($_POST['phone']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $website = htmlspecialchars(trim($_POST['website']));
 
 
 $db = new Database();
@@ -32,6 +32,7 @@ $stm->execute();
 
 <h5 style="text-align:center; margin-top:3%;"> بيانات <span><?php echo $company ?></span>  </h5>
 
+<br>
 <table class="table">
   <thead class="thead-dark">
     <tr>

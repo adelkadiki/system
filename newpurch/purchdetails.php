@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 
 <div class="rightwriting" >رقم الطلبية <?php echo $row['id']; ?></div> 
 <div class="rightwriting">التاريخ <?php echo $row['date']; ?></div> <br>
-<h5 class="rightwriting"> <?php echo $row['vendor']; ?> إلى </h5>
+<h5 class="rightwriting"> <?php echo $row['vendor']; ?> </h5>
 
 
 
@@ -56,18 +56,22 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     <?php 
     
     $count=0;
-
-    //For edit info
-
-  
-
-    //For edit info
+     $oldQnt = array();
+    
+    
 
     $stmpd = $db->connect()->prepare("SELECT * FROM purchdetails WHERE purch_id=:purch_id");
     $stmpd->bindValue(':purch_id', $id);
     $stmpd->execute();
     
-    while($rowpd=$stmpd->fetch()){ ?>
+    while($rowpd=$stmpd->fetch()){ 
+      
+          
+
+          $oldQnt[$rowpd['product']] = $rowpd['quantity'];
+      ?>
+
+            
     <tr>
       <td> <?php echo $rowpd['quantity']*$rowpd['unitprice']; ?> </td>
       <td> <?php echo $rowpd['unitprice']; ?> </td>
@@ -82,21 +86,29 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     <tr style="background-color:#cdcecc; font-weight:950;">
    <td> <?php echo $row['totalprice']; ?></td><td></td> <td></td> <td></td> <td> الإجمالي </td>
     </tr>
-    <?php } ?>
+    <?php } 
+    
+
+    ?>
   </tbody>
 </table>
 
 
-<form action="editpurch.php" method="get">
+
+<form action="editpurch.php" method="post">
 
 <input name="id" type="hidden" value="<?php echo $id; ?>">
+
+       <input type="hidden" name="jsonQnt"  value="<?php echo base64_encode(serialize($oldQnt)); ?>" > 
 
 <div class="col text-center">
 <button class="btn btn-warning" id="editpurch">تعديل</button>
 </div>
 
-
 </form>
-
 <?php } ?>
+
+
 </div>
+
+

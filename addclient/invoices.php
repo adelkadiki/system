@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
   $client_id = $_GET['id'];
   $company = $_GET['company'];
 
-  session_start();
+  
   $_SESSION['client_id'] = $client_id;
   $_SESSION['company'] = $company;
   

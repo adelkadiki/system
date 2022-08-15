@@ -17,7 +17,7 @@ include("../template/header.php"); ?>
 if(isset($_SESSION['vendor'])){
 
   $msg = $_SESSION['vendor'];
-  echo '<div class="alert alert-primary text-right" role="alert">'.$msg.'</div>';
+  echo '<div class="alert alert-primary text-center" role="alert" >'.$msg.'</div>';
   unset($_SESSION["vendor"]);
 
 }
@@ -66,7 +66,7 @@ if(isset($_SESSION['vendor'])){
     <input type="text" class="form-control" name="website" >
   </div>
   
-  <button type="button" onclick="newvendsubmit()" class="btn btn-success form-control">إرسال</button><br><br>
+  <button type="button" onclick="newvendsubmit()" class="btn btn-success form-control">إدخال</button><br><br>
 </form>
 
 </div>

@@ -14,7 +14,7 @@ $stm= $db->connect()->prepare("SELECT * FROM client");
 $stm->execute();
 
 $file = basename(__FILE__);
-session_start();
+
 $_SESSION['page'] = $file;
 
 ?>

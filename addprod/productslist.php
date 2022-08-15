@@ -27,6 +27,7 @@ include("../template/header.php");
       <th scope="col">الرمز</th>
       <th scope="col">الإسم</th>
       <th scope="col">الوصف</th>
+      <th scope="col">الكمية</th>
       
       <th></th>
     </tr>
@@ -37,7 +38,7 @@ include("../template/header.php");
       <th scope="row"> <?php echo $row['id']; ?> </th>
       <td><?php echo $row['name']; ?></td>
       <td> <?php echo $row['description']; ?> </td>
-      
+      <td> <?php echo $row['quantity']; ?> </td>
       
       <td><?php echo '<a class="btn btn-outline-info" href="productdetails.php?id='.$row['id'].'">تفاصيل</a>' ?></td>
     </tr>

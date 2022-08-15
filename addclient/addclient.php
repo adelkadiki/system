@@ -12,8 +12,6 @@ include("../template/header.php"); ?>
 <a class="btn btn-outline-primary" href="sales.php">صفحة الزبائن الرئيسية</a><br><br>
 <?php 
 
-session_start();
-
 if(isset($_SESSION['client'])){
 
   $msg = $_SESSION['client'];
@@ -68,7 +66,7 @@ if(isset($_SESSION['client'])){
     <input type="text" class="form-control" name="website">
   </div>
   
-  <button type="button" onclick="addnewclient()"  class="btn btn-primary form-control">إرسال</button><br><br>
+  <button type="button" onclick="addnewclient()"  class="btn btn-primary form-control">إدخال</button><br><br>
 </form>
 <br><br>
 </div>
